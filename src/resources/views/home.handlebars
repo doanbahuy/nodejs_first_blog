@@ -1,1 +1,16 @@
-<h1>HomePage</h1>
+<div class="mt-4">
+    <div class="row justify-content-between">
+        {{#each courses}}
+            <div class="col-sm-6 col-md-2 mb-3 ">
+                <div class="card" style="width: 18rem;">
+                    <img src="/img/logo.webp" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.name}}</h5>
+                        <p class="card-text"></p>{{this.description}}
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
