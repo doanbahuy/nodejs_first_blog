@@ -1,0 +1,30 @@
+{
+  "name": "blog1",
+  "version": "1.0.0",
+  "description": "first project",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/doanbahuy/nodejs_first_blog.git"
+  },
+  "keywords": [
+    "nodejs",
+    "blog"
+  ],
+  "author": "doanbahuy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/doanbahuy/nodejs_first_blog/issues"
+  },
+  "homepage": "https://github.com/doanbahuy/nodejs_first_blog#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  }
+}
