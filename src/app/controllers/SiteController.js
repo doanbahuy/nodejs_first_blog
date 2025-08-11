@@ -1,9 +1,9 @@
 const Course = require('../models/Course');
 
 const courses = [
-    { name: "NodeJS", description: "Learn NodeJS" },
-    { name: "ReactJS", description: "Learn ReactJS" },
-    { name: "ExpressJS", description: "Learn ExpressJS" }
+    { name: "NodeJS", description: "Learn NodeJS", slug: "nodejs" },
+    { name: "ReactJS", description: "Learn ReactJS", slug: "reactjs" },
+    { name: "ExpressJS", description: "Learn ExpressJS", slug: "expressJS" }
 ];
 class SiteController{
 

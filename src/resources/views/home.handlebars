@@ -3,9 +3,13 @@
         {{#each courses}}
             <div class="col-sm-6 col-md-2 mb-3 ">
                 <div class="card" style="width: 18rem;">
-                    <img src="/img/logo.webp" class="card-img-top" alt="...">
+                    <a href="/courses/{{this.slug}}">
+                        <img src="/img/logo.webp" class="card-img-top" alt="...">
+                    </a>
                     <div class="card-body">
-                        <h5 class="card-title">{{this.name}}</h5>
+                        <a href="/courses/{{this.slug}}">
+                            <h5 class="card-title">{{this.name}}</h5>
+                        </a>
                         <p class="card-text"></p>{{this.description}}
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
