@@ -1,0 +1,11 @@
+<form method="POST" action="/courses/{{course._id}}?_method=PUT">
+  <div class="mb-3">
+    <label for="nameCourse" class="form-label">Tên khoá học</label>
+    <input type="text" class="form-control" id="name" value="{{course.name}}" name="name" placeholder="Nhập tên khoá học">
+  </div>
+  <div class="mb-3">
+    <label for="description" class="form-label">Mô tả</label>
+    <input type="textarea" class="form-control" id="description" value="{{course.description}}" name="description" placeholder="Mô tả khoá học">
+  </div>
+  <button type="submit" class="btn btn-primary">Sửa</button>
+</form>

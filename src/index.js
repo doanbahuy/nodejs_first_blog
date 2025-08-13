@@ -22,7 +22,11 @@ app.use(express.json());
 // app.use(morgan('combined'));
 
 // Template engine 
-app.engine('handlebars', handlebars());
+app.engine('handlebars', handlebars({
+  helpers: {
+    sum: (a, b) => a + b,
+  },
+}));
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'resources/views'));
 

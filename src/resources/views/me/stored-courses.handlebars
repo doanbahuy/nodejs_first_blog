@@ -1,0 +1,70 @@
+<div class="container">
+    <table class="table">
+    <thead>
+        <tr>
+        <th scope="col">Số thứ tự</th>
+        <th scope="col">Tên khoá học</th>
+        <th scope="col">Mô tả</th>
+        <th scope="col" colspan="2"></th>
+        </tr>
+    </thead>
+        <tbody>
+             {{#each courses}}
+                <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td>
+                    <a href="/courses/{{this._id}}/edit" class="btn btn-primary">Sửa</a>
+                </td>
+                <td>
+                    <a href="#"  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCourseModal" data-courseID = "{{this._id}}">Xoá</a>
+                </td>
+             {{/each}}
+        </tbody>
+    </table>
+</div>
+
+{{!-- Hidden delete form --}}
+
+
+{{!-- Confirm delete --}}
+
+<div id="deleteCourseModal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắc chắn muốn xoá chứ.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" id="deleteCourseBtn" >Xoá</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form class="delete-course-form" method="POST"></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteCourseModal = document.getElementById('deleteCourseModal')
+        var courseID;
+        var deleteForm = document.querySelector('.delete-course-form');
+        var btnDeleteCourse = document.getElementById('deleteCourseBtn');
+
+        deleteCourseModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget; 
+            courseID = button.getAttribute('data-courseID');
+        });
+
+        btnDeleteCourse.onclick = function() {
+            deleteForm.action = '/courses/' + courseID + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    });
+</script>
