@@ -1,4 +1,8 @@
 <div class="container">
+    <div class="">
+      <h3>Khoá học của tôi</h3>
+      <a href="/me/trash/courses">Khoá học đã xoá</a>
+    </div>
     <table class="table">
     <thead>
         <tr>
@@ -20,6 +24,11 @@
                 <td>
                     <a href="#"  class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteCourseModal" data-courseID = "{{this._id}}">Xoá</a>
                 </td>
+                </tr>
+              {{else}}
+              <tr class="text-center">
+                <td colspan="5">Bạn chưa đăng khoá học nào. <a href="/courses/create">Đăng khoá học</a></td>
+              </tr>
              {{/each}}
         </tbody>
     </table>
@@ -27,6 +36,7 @@
 
 {{!-- Hidden delete form --}}
 
+<form class="delete-course-form" method="POST"></form>
 
 {{!-- Confirm delete --}}
 
@@ -48,7 +58,6 @@
   </div>
 </div>
 
-<form class="delete-course-form" method="POST"></form>
 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
