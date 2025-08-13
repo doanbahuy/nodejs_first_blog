@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars').engine;
-
+const methodOverride = require('method-override')
 const route = require('./routes');
 const connectDB = require('./config/db');
 
@@ -25,6 +25,8 @@ app.use(express.json());
 app.engine('handlebars', handlebars());
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, 'resources/views'));
+
+app.use(methodOverride('_method'))
 
 // Routes init
 route(app);
