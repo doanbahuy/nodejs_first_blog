@@ -57,9 +57,27 @@ class CourseController{
     }
     // [PATCH] /courses/:id/restore
     restore(req, res, next) {
-        Course.restore({})
-        .then(() => res.redirect('/me/stored/courses'))
+        Course.restore({ _id: req.params.id })
+        .then(() => 
+            res.redirect('/me/stored/courses')
+        )
         .catch(next);   
+    }
+
+    // [POST] /courses/handle-form-actions
+    handleFormActions(req, res, next) {
+        const action = req.body.action;
+        const courseIds = req.body.courseIDs; 
+
+        switch(action) {
+            case 'delete':
+                Course.delete({ _id: { $in: courseIds } })
+                    .then(() => res.redirect('/me/stored/courses'))
+                    .catch(next);
+                break;
+            default:
+                res.status(400).send('Invalid action');
+        }
     }
 }
 
