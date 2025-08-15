@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 
 const courseController = require('../app/controllers/CourseController');
+const authMiddleware = require('../app/middlewares/AuthMiddleware');
 
-router.get('/create', courseController.create);
-router.post('/store', courseController.store);
+router.get('/create', authMiddleware, courseController.create);
+router.post('/store', authMiddleware, courseController.store);
 router.get('/:id/edit', courseController.edit);
 router.post('/handle-form-actions', courseController.handleFormActions);
 router.put('/:id', courseController.update);

@@ -2,8 +2,6 @@ const Course = require("../models/Course");
 const { multipleMongooseToObject} = require('../../util/mongoose');
 
 class MeController{
-
-    
     // [GET] /courses/:slug
     show(req, res, next) {
         Promise.all([Course.find({}), Course.countDocumentsWithDeleted({deleted: true})])

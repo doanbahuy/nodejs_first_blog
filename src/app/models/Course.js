@@ -7,7 +7,7 @@ const Schema = mongoose.Schema;
 const Course = new Schema({
     name: { type: String, required: true },
     description: { type: String, required: true },
-    image: { type: String },
+    imgLink: { type: String , required: true},
     slug: { type: String, slug: 'name' },
 },{
     timestamps: true,

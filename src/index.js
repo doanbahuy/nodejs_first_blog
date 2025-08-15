@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const morgan = require('morgan');
@@ -5,6 +6,7 @@ const handlebars = require('express-handlebars').engine;
 const methodOverride = require('method-override')
 const route = require('./routes');
 const connectDB = require('./config/db');
+const session = require('express-session');
 
 // Connect to MongoDB
 connectDB.connectDB();
@@ -27,10 +29,22 @@ app.engine('handlebars', handlebars({
     sum: (a, b) => a + b,
   },
 }));
+
 app.set('view engine', 'handlebars');
+
 app.set('views', path.join(__dirname, 'resources/views'));
 
 app.use(methodOverride('_method'))
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { 
+        secure: false, 
+        maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
+}));
 
 // Routes init
 route(app);
